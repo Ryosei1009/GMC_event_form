@@ -2,13 +2,11 @@ import React from 'react'
 
 const ImageV2 = ({
     formData,
-    setFormData,
     handleFileChange,
     displayError,
     uploadError,
     previewUrl,
     setPreviewUrl,
-    files
 }) => {
     const handleImageChange = (event) => {
         const file = event.target.files[0];

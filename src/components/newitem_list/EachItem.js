@@ -5,23 +5,11 @@ import 'prismjs/components/prism-lua';
 import Item from './components/Item';
 import Image from './components/Image';
 import Audio from './components/Audio';
-import { GetUserName } from '../../utils/AccountUtil';
 import Emote from './components/Emote';
 import Remove from './components/Remove';
 
 const EachItem = ({ item, token }) => {
     const [isOpen, setIsOpen] = useState(false);
-
-    // 日時を MM/DD hh:mm 形式でフォーマットする関数
-    const formatDateTime = (dateString) => {
-        if (!dateString) return '';
-        const date = new Date(dateString);
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        const hours = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        return `${month}/${day} ${hours}:${minutes}`;
-    };
 
     useEffect(() => {
         Prism.highlightAll();

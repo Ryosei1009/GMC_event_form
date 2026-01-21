@@ -7,12 +7,9 @@ const NewItemList2 = ({ token }) => {
   const [itemList, setItemList] = useState([]);
   const [loading, setLoading] = useState(true);
   const pageRefs = useRef({});
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchCitizenId, setSearchCitizenId] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [itemsPerPage] = useState(50);
-  const [statusFilter, setStatusFilter] = useState("");
 
   useEffect(() => {
     async function fetchItemList() {
@@ -35,7 +32,7 @@ const NewItemList2 = ({ token }) => {
       setLoading(false);
     }
     fetchItemList();
-  }, [searchCitizenId, searchTerm, statusFilter, currentPage, itemsPerPage]);
+  }, [currentPage, itemsPerPage]);
 
   useEffect(() => {
     if (!loading) {
@@ -47,11 +44,6 @@ const NewItemList2 = ({ token }) => {
   }, [loading, itemList]);
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    setCurrentPage(1);
-  };
 
   const getStatusLabel = (status) => {
     switch (status) {

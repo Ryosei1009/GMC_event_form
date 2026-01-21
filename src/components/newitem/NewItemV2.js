@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import axios from 'axios';
-import TabV2 from './components/TabV2';
 import FormV2 from './components/FormV2';
 import PreviewV2 from './components/PreviewV2';
 import ActionPerfect from '../utils/ActionPerfect';

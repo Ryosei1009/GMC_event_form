@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import NewItem from './components/newitem/NewItemV2';
 import NewItemList from './components/newitem_list/NewItemList';
 import NotFound from './components/utils/NotFound';
-import Redirect from './components/utils/Redirect';
 import Footer from './components/utils/Footer';
 import { useState } from 'react';
 import { useEffect } from 'react';

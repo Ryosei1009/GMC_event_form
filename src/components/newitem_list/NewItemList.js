@@ -2,17 +2,15 @@ import React, { useEffect, useRef, useState } from 'react'
 import EachItem from './EachItem';
 import { Helmet } from 'react-helmet';
 import Loading from '../utils/Loading';
+import JobData from '../job_data/JobData';
 
 const NewItemList = ({ token }) => {
   const [itemList, setItemList] = useState([]);
   const [loading, setLoading] = useState(true);
   const pageRefs = useRef({});
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchCitizenId, setSearchCitizenId] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [itemsPerPage] = useState(50);
-  const [statusFilter, setStatusFilter] = useState("");
 
   useEffect(() => {
     async function fetchItemList() {
@@ -35,7 +33,7 @@ const NewItemList = ({ token }) => {
       setLoading(false);
     }
     fetchItemList();
-  }, [searchCitizenId, searchTerm, statusFilter, currentPage, itemsPerPage]);
+  }, [currentPage, itemsPerPage, token]);
 
   useEffect(() => {
     if (!loading) {
@@ -48,20 +46,6 @@ const NewItemList = ({ token }) => {
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    setCurrentPage(1);
-  };
-
-  const getStatusLabel = (status) => {
-    switch (status) {
-      case "none": return { label: "審査中", color: "bg-yellow-100 text-yellow-800" };
-      case "add": return { label: "追加済み", color: "bg-green-100 text-green-800" };
-      case "cancel": return { label: "却下", color: "bg-red-100 text-red-800" };
-      default: return { label: "審査中", color: "bg-yellow-100 text-yellow-800" };
-    }
-  };
-
   if (loading) return <Loading />;
 
   return (
@@ -73,6 +57,7 @@ const NewItemList = ({ token }) => {
           { property: 'og:title', content: '申請一覧 - GMC 2周年イベント' },
         ]}
       />
+      <JobData token={token} itemList={itemList} />
       <div className="flex justify-center mx-3 py-8">
         <div className="max-w-5xl w-full">
           {/* ヘッダー */}
@@ -118,7 +103,6 @@ const NewItemList = ({ token }) => {
                   key={item.id}
                   item={item}
                   pageRefs={pageRefs}
-                  getStatusLabel={getStatusLabel}
                 />
               ))}
             </div>

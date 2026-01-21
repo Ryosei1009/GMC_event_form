@@ -1,21 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import Prism from 'prismjs';
+import React, { useState } from 'react'
 import 'prismjs/components/prism-lua';
-import { GetUserName } from '../../utils/AccountUtil';
 
 const EachItem2 = ({ item }) => {
     const [isOpen, setIsOpen] = useState(false);
-
-    // 日時を MM/DD hh:mm 形式でフォーマットする関数
-    const formatDateTime = (dateString) => {
-        if (!dateString) return '';
-        const date = new Date(dateString);
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        const hours = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        return `${month}/${day} ${hours}:${minutes}`;
-    };
 
     const getItemTypeLabel = (item) => {
         if (item.item_type === "effect") return "効果アイテム";
