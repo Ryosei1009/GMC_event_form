@@ -203,14 +203,22 @@ const NewItemV2 = () => {
                     { name: 'description', content: 'GMC 2周年イベント用のアイテム申請フォーム' },
                 ]}
             />
-            <div className="min-h-screen">
-                <div className="relative justify-center flex">
+            {/* <div className="min-h-screen"> */}
+                {/* <div className="relative justify-center flex">
                     <div className="opacity-100 text-black absolute max-sm:top-12 top-28 text-center mx-4">
                         <span className="block text-4xl max-sm:text-3xl font-bold mb-1 mt-8">2周年イベント アイテム申請</span>
                     </div>
                     <img src="/images/bg.png" alt="" className="opacity-20 h-72 max-sm:h-48 w-full object-cover"></img>
-                </div>
-                <div className="mt-6">
+                </div> */}
+                <section className="flex justify-center items-center pt-20 pb-24 text-black">
+                    <img className="w-1/4 mr-8" src="/images/logo.png" alt="" />
+                    <div className="justify-start w-2/4">
+                        <h1 className="text-4xl max-md:text-3xl max-sm:text-2xl font-bold">申請の受付は終了しました。</h1>
+                        <p className="text-lg max-md:text-base max-sm:text-sm">GMC 2周年フリーマーケット 出店・商品申請は2/12(木) 4:00に締め切りました。</p>
+                        <p className="text-lg max-md:text-base max-sm:text-sm">イベントへの参加お待ちしております。</p>
+                    </div>
+                </section>
+                {/* <div className="mt-6">
                     <FormV2
                         formData={formData}
                         handleChange={handleChange}
@@ -249,8 +257,8 @@ const NewItemV2 = () => {
                     title={errorModal.title}
                     message={errorModal.message}
                     details={errorModal.details}
-                />
-            </div>
+                /> */}
+            {/* </div> */}
         </>
     )
 }
